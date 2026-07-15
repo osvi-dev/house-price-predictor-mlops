@@ -1,0 +1,24 @@
+services:
+  model:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    networks:
+      - mlops_network
+
+  streamlit:
+    build: 
+      context: streamlit_app/
+      dockerfile: Dockerfile
+    ports:
+      - 8501:8501
+    networks:
+      - mlops_network
+    depends_on:
+      - model
+
+networks:
+  mlops_network:
+    driver: bridge
