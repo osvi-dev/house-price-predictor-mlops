@@ -44,8 +44,7 @@ jobs:
 
       - name: Run MLflow Server
         run: |
-          docker run -d -p 5555:5000 ghcr.io/mlflow/mlflow:latest \
-          --name mlflow-tracking-server \
+          docker run -d -p 5555:5000 --name mlflow-tracking-server ghcr.io/mlflow/mlflow:latest \
           mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri \
           sqlite:////mlflow/mlflow.db --default-artifact-root mlflow-artifacts:/ \
           --artifacts-destination /mlflow/artifacts --serve-artifacts
