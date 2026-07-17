@@ -76,7 +76,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: Dokcerfile
+          file: Dockerfile
           push: true
           tags: ${{ vars.DOCKER_USERNAME }}/mlops-project:${{ github.sha }}
     
