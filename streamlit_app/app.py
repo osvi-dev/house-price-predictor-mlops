@@ -1,9 +1,7 @@
 import streamlit as st
 import requests
-import json
 import time
 import os
-import socket  # For hostname and IP address
 
 # Set the page configuration (must be the first Streamlit command)
 st.set_page_config(
@@ -31,7 +29,7 @@ with col1:
     st.markdown('<div class="card">', unsafe_allow_html=True)
 
     # Square Footage slider
-    st.markdown(f"<p><strong>Square Footage:</strong> <span id='sqft-value'></span></p>", unsafe_allow_html=True)
+    st.markdown("<p><strong>Square Footage:</strong> <span id='sqft-value'></span></p>", unsafe_allow_html=True)
     sqft = st.slider("", 500, 5000, 1500, 50, label_visibility="collapsed", key="sqft")
     st.markdown(f"<script>document.getElementById('sqft-value').innerText = '{sqft} sq ft';</script>", unsafe_allow_html=True)
 
@@ -50,7 +48,7 @@ with col1:
     location = st.selectbox("", options=["Urban", "Suburban", "Rural", "Urban", "Waterfront", "Mountain"], index=1, label_visibility="collapsed")
 
     # Year Built slider
-    st.markdown(f"<p><strong>Year Built:</strong> <span id='year-value'></span></p>", unsafe_allow_html=True)
+    st.markdown("<p><strong>Year Built:</strong> <span id='year-value'></span></p>", unsafe_allow_html=True)
     year_built = st.slider("", 1900, 2025, 2000, 1, label_visibility="collapsed", key="year")
     st.markdown(f"<script>document.getElementById('year-value').innerText = '{year_built}';</script>", unsafe_allow_html=True)
 
