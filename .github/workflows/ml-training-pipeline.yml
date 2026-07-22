@@ -9,6 +9,14 @@ on:
       - "src/models/**"
       - "configs/**"
       - "data/raw/**"
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/data/**"
+      - "src/features/**"
+      - "src/models/**"
+      - "configs/**"
+      - "data/raw/**"
   workflow_dispatch:
 
 concurrency:
