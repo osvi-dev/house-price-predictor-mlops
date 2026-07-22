@@ -19,6 +19,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Download model artifacts
+        if: github.event_name == 'workflow_run'
+        uses: actions/download-artifact@v4
+        with:
+          name: trained-model
+          path: models/trained/
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
