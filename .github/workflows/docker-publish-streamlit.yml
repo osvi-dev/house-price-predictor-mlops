@@ -1,5 +1,4 @@
-name: Docker Publish
-
+name: Docker Publish Streamlit Image
 on:
   workflow_run:
     workflows: ["ML Training Pipeline"]
@@ -42,11 +41,11 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: streamlit_app/
           file: Dockerfile
           push: true
           tags: |
-            ${{ vars.DOCKER_USERNAME }}/fast-api-ml-project:${{ env.SHORT_SHA }}
-            ${{ vars.DOCKER_USERNAME }}/fast-api-ml-project:latest
+            ${{ vars.DOCKER_USERNAME }}/streamlit-app:${{ env.SHORT_SHA }}
+            ${{ vars.DOCKER_USERNAME }}/streamlit-app:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
