@@ -18,6 +18,7 @@ on:
       - "configs/**"
       - "data/raw/**"
   workflow_dispatch:
+  workflow_call:
 
 concurrency:
   group: ml-pipeline

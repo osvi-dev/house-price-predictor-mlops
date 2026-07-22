@@ -6,6 +6,7 @@ on:
     types: [completed]
     branches: [main]
   workflow_dispatch:
+  workflow_call:
 
 jobs:
   build-push-api:
@@ -13,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     if: >
       github.event_name == 'workflow_dispatch' ||
+      github.event_name == 'workflow_call' ||
       github.event.workflow_run.conclusion == 'success'
     steps:
       - name: Checkout code

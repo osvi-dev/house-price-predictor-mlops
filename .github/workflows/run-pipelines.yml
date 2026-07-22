@@ -1,0 +1,46 @@
+name: "Run Pipelines"
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_code_quality:
+        description: "Run Code Quality (lint + tests)"
+        type: boolean
+        default: true
+      run_ml_training:
+        description: "Run ML Training Pipeline"
+        type: boolean
+        default: false
+      run_docker_fastapi:
+        description: "Build & Push FastAPI Docker Image"
+        type: boolean
+        default: false
+      run_docker_streamlit:
+        description: "Build & Push Streamlit Docker Image"
+        type: boolean
+        default: false
+
+jobs:
+  code-quality:
+    name: "Code Quality"
+    if: ${{ inputs.run_code_quality }}
+    uses: ./.github/workflows/code-quality.yml
+    secrets: inherit
+
+  ml-training:
+    name: "ML Training Pipeline"
+    if: ${{ inputs.run_ml_training }}
+    uses: ./.github/workflows/ml-training-pipeline.yml
+    secrets: inherit
+
+  docker-fastapi:
+    name: "Docker FastAPI"
+    if: ${{ inputs.run_docker_fastapi }}
+    uses: ./.github/workflows/docker-publish-fast-api.yml
+    secrets: inherit
+
+  docker-streamlit:
+    name: "Docker Streamlit"
+    if: ${{ inputs.run_docker_streamlit }}
+    uses: ./.github/workflows/docker-publish-streamlit.yml
+    secrets: inherit
