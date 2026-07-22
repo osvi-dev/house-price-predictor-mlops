@@ -46,7 +46,7 @@ jobs:
           file: Dockerfile
           push: true
           tags: |
-            ${{ vars.DOCKER_USERNAME }}/mlops-project:${{ env.SHORT_SHA }}
-            ${{ vars.DOCKER_USERNAME }}/mlops-project:latest
+            ${{ vars.DOCKER_USERNAME }}/fast-api-ml-project:${{ env.SHORT_SHA }}
+            ${{ vars.DOCKER_USERNAME }}/fast-api-ml-project:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
